@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="reveal.js/css/theme/night.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2> Git - A Gentle Introduction </h2>
+				</section>
+				<section>
+					<section>
+						<h3>
+							What is Git ?
+						</h3>
+						Git is a distributed version control system, for tracking code changes in software development.						
+					</section>
+					<section>
+						<h3>
+							What is a Version Control System ?
+						</h3>
+						Version control/ Revision control is the management of changes to documents , source codes. Revisions can be compared restored and with some types of files, merged.
+					</section>
+
+				</section>
+			</div>
+		</div>
+
+		<script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+
+				multiplex:{
+					"secret":null,
+					"id":"4d91ef4090f50ffa",
+					"url":"https://reveal-js-multiplex-ccjbegmaii.now.sh"
+				},
+				
+				dependencies: [
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js', async: true },
+					{ src: 'reveal.js/plugin/multiplex/client.js', async: true },
+					{ src: 'reveal.js/plugin/markdown/marked.js' },
+					{ src: 'reveal.js/plugin/markdown/markdown.js' },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+			// Reveal.addEventListener('fragmentshown',function(event){
+			// 	if(event.fragment.className.indexOf('game_world') > -1 ){
+			// 		Reveal.getCurrentSlide().dataset.backgroundImage = "img/ea07.jpg"
+			// 		Reveal.getCurrentSlide().dataset.backgroundOpacity = "0.3"
+			// 	}
+			// },false)
+		</script>
+	</body>
+</html>
