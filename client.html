@@ -25,7 +25,7 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h2> Git - A Gentle Introduction </h2>
+					<h1> Git - A Gentle Introduction </h1>
 				</section>
 				<section>
 					<section>
@@ -34,13 +34,255 @@
 						</h3>
 						Git is a distributed version control system, for tracking code changes in software development.						
 					</section>
-					<section>
+					<section data-background-image="img/kernel_versions.png" data-background-opacity="0.3">
 						<h3>
 							What is a Version Control System ?
 						</h3>
 						Version control/ Revision control is the management of changes to documents , source codes. Revisions can be compared restored and with some types of files, merged.
 					</section>
+					<section>
+						
+						<h3>
+							Why even use a VCS like git ?
+						</h3>
+						<ul>
 
+						<li> Large code base -> Large number of changes. </li>
+						<li> Maintaining seperate copies for each version becomes unsustainable very quickly, if not for a VCS </li>
+						<li> History of changes becomes easy to track </li>
+						<li> Collaborating is easier with a VCS </li>
+
+					</section>
+					<section>
+						<h3>
+							Some Examples
+						</h3>
+
+						<ul>
+							<li> Bitkeeper - The version control which was used for linux kernel development before Git </li>
+							<li> Subversion </li>
+							<li> Mercurial </li>
+							<li> and obviously Git.</li>
+
+							Here is a <a href="https://en.wikipedia.org/wiki/List_of_version-control_software"> list </a> of all of them
+						</ul>
+					</section>
+
+				</section>
+				<section>
+					<section> 
+						<h3>
+							Common operations
+						</h3>
+						<p>
+							Some of the common operations expected out of a VCS.	
+						</p>
+						
+						<ul>
+							<li> Commiting </li>
+							<li> Branching </li>
+							<li> Tagging/ Versioning </li>
+							<li> Reverting </li>
+							<li> Cloning with/wo history </li>
+							<li> Logging of changes </li>
+							<li> Comparing between versions </li>
+							<li> and <a href="https://en.wikipedia.org/wiki/Version_control#Common_terminology"> more. </a> </li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>
+							The Git way of Version Control
+						</h3>
+
+						<h4> Point to note: </h4>
+						<ul>
+							<li> Git is not only for Github. Git can be used as a offline version control system, to maintain code.</li>
+						</ul>
+					</section>
+					<section>
+						<h3>
+							How to learn about Git?
+						</h3>
+
+						The first and foremost way is the <a href="https://git-scm.com/book/en/v2"> Git book </a>, available as web version, pdf, mobi, epub , kindle format too. This book covers all the things that can be done with Git and more. 
+
+						<p> Shameless self-promotion ahead !! </p>
+						<a href="https://linuxfromanoobie.wordpress.com/2018/04/07/git-an-introduction/">My blog </a> about git, tries to explain the very basics of Git to develop better understanding of how to use it.
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>
+							Basics operations of Git.
+						</h3>
+						<h4>
+							INIT:
+						</h4>
+
+						The above command is used to initialize a empty repository in the current folder.
+
+						<p>
+							Try the below command in a new folder:
+							<pre>
+								<code data-trim>
+									git init
+								</code>
+							</pre>
+						</p>
+					</section>
+					<section>
+						<h4>
+							INIT:
+						</h4>
+
+						The command creates a empty git repository under the current folder. Notice the <code>.git</code> folder under the same directory. ( Use ls -a to see it )
+
+						<p>
+							The .git folder contains a set of files, which are mostly metadata about the repository.
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h4>
+							CLONING:
+						</h4>
+						Most people meet git for the first time, to clone some project out of Github. It indeed works really well for Github.
+
+						<p>
+							Just try
+							<pre>
+								<code data-trim>
+									git clone https://github.com/harish1996/presentation.git
+								</code>
+							</pre>
+						</p>
+					</section>
+					<section>
+						<h4> CLONING: </h4>
+						Here the URL that was mentioned was a github repository.Notice the <code> .git </code> at the end of the link. This indicates that we are trying to clone the .git folder at the server to local.
+
+						<p>
+						Clone just copies the .git folder from the server, and somehow reconstructs the entire repository with the history using that.
+
+						<p>
+						Details later.
+					</section>
+				</section>
+				<section>
+					<section>
+						<h4>
+							ADDING and COMMITING:
+						</h4>
+
+						Now we change some file in the working directory, and are ready to call it the next version ( the version you want saved ). How do we do that?
+
+						<p>
+							Consider that you changed/added a file named 'a.html' and 'b.html'. To add that to the 'staging area'.
+							<pre>
+								<code data-trim>
+									git add a.html b.html
+								</code>
+							</pre>
+						</p>
+					</section>
+					<section>
+						<h4>
+							ADDING and COMMITING:
+						</h4>
+
+						<p>
+							So we added stuff to the staging area.. It means we have said what files we want to update. Now we have to make it official, i.e. create an actual 
+							checkpoint, which we can return to if we want later. This process of creating a checkpoint is called committing.
+
+							<pre>
+								<code data-trim>
+									git commit
+								</code>
+							</pre>
+						</p>	
+					</section>
+					<section>
+						<p>
+							Commits usually take in a message. git commit automagically, opens a editor when you provide the command. But if you dont want to do that.. you can provide the commit message in the command itself like
+
+							<pre>
+								<code data-trim>
+									git commit -m "This is my message"
+								</code>
+							</pre>
+						</p>					
+					</section>
+				</section>
+				<section>
+					<section style="font-size: 25px">
+						<h3>
+							INTERNALS: How does a commit even work ?
+						</h3>
+
+						<p>
+							We saw how to commit. Now, when we commit something, a set of bizzare things happen in the background. 
+
+							<ul>
+								<li> All the changed files are compressed and stored inside a particular folder called 'objects' in the .git folder. Each file's compressed counterpart now has a different name... The contents hash 
+
+								<img src="img/cat_file.png">
+								</li>
+								<li> These are called blobs. binary large objects. </li>
+							</ul>
+						</p>
+					</section>
+					<section style="font-size: 25px">
+						<p>
+							<ul>
+								<li> Now with all the files in the object format, what will happen to the folders? Folders will get registered through a object called tree. </li>
+								<li> Each tree corresponds to a particular folder</li>
+								<li>
+									A tree will contain all the hashes of files under the corresponding folder ( remember the previous step of converting files to compressed 'blobs' ). 
+									<img src="img/tree.png">
+								</li>
+								<li>
+									If there is a subfolder? Simple.. That subfolder's corresponding tree will be entered there.
+								</li>
+								<li>
+									Now this file will again get compressed and stored in the same dump i.e. the 'objects' folder under the .git folder, with its name again modified to have its own hash.
+								</li>
+
+							</ul>
+						</p>
+					</section>
+					<section>
+						<ul>
+							<li>
+								It is not over yet.. We have managed to save our current working directory's state in a tree. Now we have to link it with our message, date , time and everything. We call it the 'commit object'.
+
+								<img src="img/commit.png">
+							</li>
+							<li>
+								The commit object file will have the author name, its corresponding tree, the parent commit ( lets come to this later. ), and the commit message. Again, git compresses this file, puts it inside the object folder with its own hash as its name. 
+							</li>
+						</ul>
+					</section>
+					<section>
+						<img src="img/overyet.jpeg">
+						<p>
+							Well.. Almost!
+						</p>
+					</section>
+					<section>
+						<ul>
+							<li> 
+								Now we have the commit hash, which we are going to call commit id from now. We need to store it somewhere for future reference. Right?
+							</li>
+							<li>
+								So there is a file called HEAD under .git folder, which stores info about which branch we are in.. ( Again,! wait.. ). So the branch information are contained in a subfolder under .git, named  refs/heads/. So the commit ID is written into the file corresponding to the current branch.
+
+								<img src="img/refs.png">
+							</li>
+						</ul>
+					</section>
 				</section>
 			</div>
 		</div>
